@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="en" data-font="geist">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#000000">
+<title>Lucas Stadnik — Video producer</title>
+<meta name="description" content="Lucas Stadnik shoots, edits and hosts video: ads, field coverage, shorts, talking heads and podcasts.">
+<meta property="og:title" content="Lucas Stadnik — Video producer">
+<meta property="og:description" content="Ads, field coverage, shorts, talking heads and podcasts. Shot, edited and hosted by Lucas Stadnik.">
+<meta property="og:image" content="https://i.ytimg.com/vi/Kpir42MPNCE/hqdefault.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+  :root {
+    color-scheme: dark;
+    --bg: #000000;
+    --surface: #0D0E10;
+    --surface-2: #17191C;
+    --text: #ECEEF1;
+    --muted: #8A9099;
+    --line: rgba(255, 255, 255, .09);
+    --silver: linear-gradient(100deg, #9CA2AB 0%, #F4F5F7 22%, #C4C8CE 40%, #FFFFFF 50%, #A9AEB6 64%, #E7E9EC 82%, #8E949D 100%);
+    --silver-flat: #C9CDD3;
+    --radius: 22px;
+  }
+
+  /* ---- Three type options ---- */
+  html[data-font="geist"] {
+    --display: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --body: "Geist", "Helvetica Neue", Arial, sans-serif;
+    --dw: 600; --dt: -.05em; --dlh: .9; --dsize: 1;
+  }
+  html[data-font="manrope"] {
+    --display: "Manrope", "Helvetica Neue", Arial, sans-serif;
+    --body: "Manrope", "Helvetica Neue", Arial, sans-serif;
+    --dw: 700; --dt: -.045em; --dlh: .92; --dsize: .96;
+  }
+  html[data-font="instrument"] {
+    --display: "Instrument Serif", "Times New Roman", serif;
+    --body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+    --dw: 400; --dt: -.025em; --dlh: .88; --dsize: 1.14;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 1rem; background: var(--bg); }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+  body {
+    font-family: var(--body);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 1.0625rem;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  a { color: inherit; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--silver-flat); outline-offset: 3px; }
+
+  .wrap { width: min(1200px, 100% - 2.5rem); margin-inline: auto; }
+
+  .display { font-family: var(--display); font-weight: var(--dw); letter-spacing: var(--dt); }
+  .metal {
+    background: var(--silver);
+    background-size: 220% 100%;
+    background-position: 0% 0;
+    -webkit-background-clip: text; background-clip: text;
+    color: transparent;
+  }
+
+  /* Header */
+  .top { display: flex; justify-content: space-between; align-items: center; padding: 1.4rem 0; gap: 1rem; }
+  .top .mark { font-family: var(--display); font-weight: var(--dw); letter-spacing: -.02em; font-size: 1.15rem; text-decoration: none; }
+  .top nav { display: flex; gap: .4rem; }
+  .top nav a { color: var(--muted); text-decoration: none; padding: .45rem .95rem; border-radius: 999px; font-size: .95rem; }
+  .top nav a:hover { color: var(--text); background: var(--surface-2); }
+
+  /* Hero */
+  .hero { padding: 5rem 0 3rem; display: grid; gap: 2rem; }
+  .hero h1 {
+    font-size: calc(clamp(3.4rem, 12.5vw, 11rem) * var(--dsize));
+    line-height: var(--dlh);
+    padding-bottom: .06em;
+  }
+  .hero .intro { display: grid; gap: .6rem; max-width: 38ch; }
+  .hero .intro p:first-child { font-size: clamp(1.15rem, 2vw, 1.4rem); line-height: 1.4; color: var(--text); }
+  .hero .intro p:last-child { color: var(--muted); }
+  @media (min-width: 900px) { .hero { grid-template-columns: 1.65fr 1fr; align-items: end; } }
+
+  /* The one moment: a single silver sheen across the name on load */
+  @media (prefers-reduced-motion: no-preference) {
+    .hero h1.metal { animation: sheen 2.2s cubic-bezier(.2,.7,.2,1) .2s both; }
+    @keyframes sheen { from { background-position: 100% 0; } to { background-position: 0% 0; } }
+  }
+
+  .reel { padding-bottom: 1rem; }
+  .reel .frame { border-radius: calc(var(--radius) + 6px); }
+  .reel figcaption { display: flex; justify-content: space-between; gap: 1rem; color: var(--muted); margin-top: .9rem; font-size: .95rem; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 1rem; padding: 3rem 0; }
+  .stats div { display: flex; flex-direction: column-reverse; justify-content: flex-end; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 1.4rem 1.5rem; }
+  .stats dt { color: var(--muted); font-size: .95rem; margin-top: .3rem; }
+  .stats dd { font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.05; font-variant-numeric: tabular-nums; }
+
+  /* Video frame */
+  .frame { position: relative; aspect-ratio: 16 / 9; background: var(--surface); overflow: hidden; border-radius: var(--radius); border: 1px solid var(--line); isolation: isolate; }
+  .frame.v { aspect-ratio: 9 / 16; }
+  .frame > button { position: absolute; inset: 0; border: 0; background: none; cursor: pointer; display: block; width: 100%; height: 100%; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .frame > button::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.55), rgba(0,0,0,0) 45%); }
+  .frame .play {
+    position: absolute; left: 1.1rem; bottom: 1.1rem; z-index: 1;
+    width: 3.2rem; height: 3.2rem; border-radius: 50%;
+    background: linear-gradient(145deg, #FFFFFF, #B9BEC5 55%, #E6E8EB);
+    color: #000;
+    display: grid; place-items: center;
+    box-shadow: 0 6px 24px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.9);
+  }
+  .frame.v .play { width: 2.6rem; height: 2.6rem; left: .8rem; bottom: .8rem; }
+  .frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+  /* Sections */
+  .sec { padding: 5.5rem 0 1rem; }
+  .sec-head { display: grid; grid-template-columns: 1fr auto; gap: .7rem 2rem; align-items: end; margin-bottom: 2.25rem; }
+  .sec h2 { font-size: calc(clamp(2.1rem, 5vw, 3.6rem) * var(--dsize)); line-height: 1; }
+  .sec-head .ratio { color: var(--muted); font-variant-numeric: tabular-nums; border: 1px solid var(--line); border-radius: 999px; padding: .2rem .75rem; font-size: .85rem; }
+  .sec-head p { grid-column: 1 / -1; color: var(--muted); max-width: 52ch; }
+
+  .grid { display: grid; gap: 2.25rem 1.25rem; }
+  .g1 { grid-template-columns: 1fr; }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 820px) {
+    .g2 { grid-template-columns: 1fr; }
+    .g4 { grid-template-columns: repeat(2, 1fr); gap: 1.75rem .9rem; }
+  }
+
+  .card h3 { font-size: 1.05rem; font-weight: 500; line-height: 1.35; margin-top: .9rem; }
+  .card .note { color: var(--muted); font-size: .95rem; margin-top: .3rem; max-width: 60ch; }
+  .tags { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .65rem; }
+  .tags li { background: var(--surface-2); border-radius: 999px; padding: .15rem .7rem; font-size: .8rem; color: var(--silver-flat); }
+  .g1 .card h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+
+  /* Contact */
+  .contact { margin-top: 6rem; padding: clamp(2.5rem, 6vw, 4.5rem); background: var(--surface); border: 1px solid var(--line); border-radius: calc(var(--radius) + 6px); }
+  .contact p { color: var(--muted); }
+  .contact .big {
+    display: inline-block; margin: .6rem 0 2rem;
+    font-size: calc(clamp(1.7rem, 5.5vw, 3.8rem) * var(--dsize)); line-height: 1.05;
+    text-decoration: none; overflow-wrap: anywhere;
+  }
+  .contact .big[href]:hover { filter: brightness(1.15); }
+  .contact ul { list-style: none; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .contact ul a { display: inline-block; text-decoration: none; padding: .55rem 1.1rem; border-radius: 999px; background: var(--surface-2); color: var(--text); }
+  .contact ul a:hover { background: #22252A; }
+  footer { padding: 2rem 0 6rem; color: var(--muted); font-size: .9rem; }
+
+  /* Font picker (preview only; turn off with fontPicker: false) */
+  .picker {
+    position: fixed; left: 50%; transform: translateX(-50%);
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 10;
+    display: flex; gap: .25rem; padding: .3rem;
+    background: rgba(23, 25, 28, .72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line); border-radius: 999px;
+    box-shadow: 0 10px 40px rgba(0,0,0,.6);
+  }
+  .picker button { border: 0; background: none; color: var(--muted); padding: .5rem 1rem; border-radius: 999px; cursor: pointer; font-size: 1rem; white-space: nowrap; }
+  .picker button[aria-pressed="true"] { background: linear-gradient(145deg, #FFFFFF, #C3C7CD); color: #000; }
+  .picker button[data-k="geist"] { font-family: "Geist", sans-serif; font-weight: 600; }
+  .picker button[data-k="manrope"] { font-family: "Manrope", sans-serif; font-weight: 700; }
+  .picker button[data-k="instrument"] { font-family: "Instrument Serif", serif; font-size: 1.15rem; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#">Lucas Stadnik</a>
+    <nav aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1 class="display metal">Lucas<br>Stadnik</h1>
+    <div class="intro">
+      <p id="tagline"></p>
+      <p id="location"></p>
+    </div>
+  </section>
+
+  <figure class="reel" id="reel"></figure>
+
+  <dl class="stats" id="stats" hidden></dl>
+
+  <main id="work"></main>
+
+  <section class="contact" id="contact">
+    <p>Have a project, a role or a story to tell?</p>
+    <a class="big display metal" id="email"></a>
+    <ul id="links"></ul>
+  </section>
+
+  <footer id="footer"></footer>
+</div>
+
+<script>
+/* ==========================================================
+   EDIT YOUR PORTFOLIO HERE
+   - font: "geist" | "manrope" | "instrument"
+   - fontPicker: true shows the switcher at the bottom; set false once you choose
+   - id: the YouTube video ID (the part after "v=" or "/shorts/")
+   - title: leave "" to load the title from YouTube automatically
+   - note: optional one-line context (the brief, the challenge, the result)
+   - roles: optional; overrides the section's default roles
+   ========================================================== */
+const PORTFOLIO = {
+  name: "Lucas Stadnik",
+  font: "geist",
+  fontPicker: false,
+
+  tagline: "I shoot, edit and host video for brands: ads, field coverage, shorts, talking heads and podcasts.",
+  location: "Based in Florianópolis, Brazil. Working with teams worldwide.",
+  email: "",            // e.g. "hello@yourname.com"
+  links: [
+    // { label: "LinkedIn", url: "https://www.linkedin.com/in/your-profile" },
+    // { label: "YouTube", url: "https://www.youtube.com/@your-channel" },
+  ],
+
+  // Put your showreel's YouTube ID here. While empty, the first video below is used.
+  showreel: "",
+
+  // Leave empty to hide. Example: { label: "Views generated", value: "2M+" }
+  stats: [],
+
+  sections: [
+    {
+      title: "Ads",
+      ratio: "16:9",
+      layout: "g1",
+      description: "Commercial spots, from shoot to final cut.",
+      roles: ["Camera", "Edit"],
+      videos: [
+        { id: "Kpir42MPNCE", title: "", note: "" },
+      ],
+    },
+    {
+      title: "Field",
+      ratio: "16:9",
+      layout: "g2",
+      description: "Interviews and event coverage shot on location.",
+      roles: ["Camera", "Edit"],
+      videos: [
+        { id: "2quedfEz-Rg", title: "", note: "" },
+        { id: "-2C8iJkbJiA", title: "", note: "" },
+      ],
+    },
+    {
+      title: "Shorts",
+      ratio: "9:16",
+      layout: "g4",
+      vertical: true,
+      description: "Vertical stories built to hold attention from the first second.",
+      roles: ["Camera", "Edit"],
+      videos: [
+        { id: "9W9C9lNross", title: "" },
+        { id: "yAKVIybIIyY", title: "" },
+        { id: "pgzma3IKcC0", title: "" },
+        { id: "lw76MFmR9oQ", title: "" },
+      ],
+    },
+    {
+      title: "Talking heads",
+      ratio: "16:9",
+      layout: "g2",
+      description: "Direct-to-camera pieces: lighting, framing and pacing in the edit.",
+      roles: ["Camera", "Edit"],
+      videos: [
+        { id: "qKaayZZBlK8", title: "" },
+        { id: "YCCwNSITkEE", title: "" },
+        { id: "g2eBToJweZE", title: "" },
+        { id: "AEl696dsP5Q", title: "" },
+      ],
+    },
+    {
+      title: "Podcasts",
+      ratio: "16:9",
+      layout: "g2",
+      description: "Conversations I hosted with founders and experts.",
+      roles: ["Host"],
+      videos: [
+        { id: "6uHvyITkNTM", title: "" },
+        { id: "hYhMUGAwN5Y", title: "" },
+        { id: "nmnwddP4aFw", title: "" },
+        { id: "2AIp50rT7R4", title: "" },
+      ],
+    },
+  ],
+};
+
+/* ---------- Rendering (no need to edit below) ---------- */
+const FONTS = {
+  geist:      { label: "Geist",      css: "family=Geist:wght@300..700" },
+  manrope:    { label: "Manrope",    css: "family=Manrope:wght@300..800" },
+  instrument: { label: "Instrument", css: "family=Instrument+Serif&family=Instrument+Sans:wght@400..600" },
+};
+const loaded = new Set();
+function loadFont(k) {
+  if (!FONTS[k] || loaded.has(k)) return;
+  const l = document.createElement("link");
+  l.rel = "stylesheet";
+  l.href = `https://fonts.googleapis.com/css2?${FONTS[k].css}&display=swap`;
+  document.head.appendChild(l);
+  loaded.add(k);
+}
+function setFont(k) {
+  if (!FONTS[k]) k = "geist";
+  loadFont(k);
+  document.documentElement.dataset.font = k;
+  document.querySelectorAll(".picker button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.k === k)));
+}
+
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const PLAY = '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>';
+
+function frame(v, vertical) {
+  return `<div class="frame${vertical ? " v" : ""}" data-id="${esc(v.id)}">
+    <button type="button" aria-label="Play video" data-label-for="${esc(v.id)}">
+      <img src="https://i.ytimg.com/vi/${esc(v.id)}/hqdefault.jpg" alt="" loading="lazy">
+      <span class="play">${PLAY}</span>
+    </button>
+  </div>`;
+}
+
+function card(v, section) {
+  const roles = v.roles || section.roles || [];
+  return `<article class="card">
+    ${frame(v, section.vertical)}
+    <h3 data-title-for="${esc(v.id)}">${esc(v.title)}</h3>
+    ${v.note ? `<p class="note">${esc(v.note)}</p>` : ""}
+    ${roles.length ? `<ul class="tags" aria-label="My role">${roles.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}
+  </article>`;
+}
+
+function render() {
+  const P = PORTFOLIO;
+  document.getElementById("tagline").textContent = P.tagline;
+  document.getElementById("location").textContent = P.location;
+
+  const first = P.sections.find(s => s.videos.length)?.videos[0];
+  const heroId = P.showreel || first?.id;
+  const reel = document.getElementById("reel");
+  if (heroId) {
+    reel.innerHTML = `${frame({ id: heroId })}
+      <figcaption><span data-title-for="${esc(heroId)}">${P.showreel ? "Showreel" : esc(first.title)}</span><span>16:9</span></figcaption>`;
+  }
+
+  if (P.stats.length) {
+    const st = document.getElementById("stats");
+    st.innerHTML = P.stats.map(s => `<div><dt>${esc(s.label)}</dt><dd class="display metal">${esc(s.value)}</dd></div>`).join("");
+    st.hidden = false;
+  }
+
+  document.getElementById("work").innerHTML = P.sections.map(s => {
+    const vids = s.videos.filter(v => v.id !== heroId);
+    if (!vids.length) return "";
+    const hid = "h-" + s.title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    return `<section class="sec" aria-labelledby="${hid}">
+      <div class="sec-head">
+        <h2 class="display" id="${hid}">${esc(s.title)}</h2>
+        <span class="ratio">${esc(s.ratio || "")}</span>
+        <p>${esc(s.description)}</p>
+      </div>
+      <div class="grid ${s.layout || "g2"}">${vids.map(v => card(v, s)).join("")}</div>
+    </section>`;
+  }).join("");
+
+  const mail = document.getElementById("email");
+  if (P.email) { mail.href = `mailto:${P.email}`; mail.textContent = P.email; }
+  else { mail.textContent = "Add your email in index.html"; mail.removeAttribute("href"); }
+  document.getElementById("links").innerHTML = P.links.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join("");
+  document.getElementById("footer").textContent = `© ${new Date().getFullYear()} ${P.name}`;
+
+  // Fonts
+  const fromUrl = new URLSearchParams(location.search).get("font");
+  if (P.fontPicker) {
+    Object.keys(FONTS).forEach(loadFont);
+    const bar = document.createElement("div");
+    bar.className = "picker";
+    bar.setAttribute("role", "group");
+    bar.setAttribute("aria-label", "Typeface preview");
+    bar.innerHTML = Object.entries(FONTS).map(([k, f]) => `<button type="button" data-k="${k}" aria-pressed="false">${f.label}</button>`).join("");
+    bar.addEventListener("click", e => { const b = e.target.closest("button"); if (b) setFont(b.dataset.k); });
+    document.body.appendChild(bar);
+  }
+  setFont(fromUrl || P.font);
+}
+
+document.addEventListener("click", e => {
+  const btn = e.target.closest(".frame > button");
+  if (!btn) return;
+  const box = btn.parentElement;
+  const id = box.dataset.id;
+  box.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?autoplay=1&rel=0&playsinline=1"
+    title="${esc(btn.getAttribute("aria-label"))}" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+});
+
+async function fillTitles() {
+  const empty = [...document.querySelectorAll("[data-title-for]")].filter(el => !el.textContent.trim());
+  const ids = [...new Set(empty.map(el => el.dataset.titleFor))];
+  await Promise.all(ids.map(async id => {
+    let title = "Watch on YouTube";
+    try {
+      const r = await fetch(`https://noembed.com/embed?url=${encodeURIComponent("https://www.youtube.com/watch?v=" + id)}`);
+      const d = await r.json();
+      if (d.title) title = d.title;
+    } catch (_) {}
+    document.querySelectorAll(`[data-title-for="${CSS.escape(id)}"]`).forEach(el => { if (!el.textContent.trim()) el.textContent = title; });
+    document.querySelectorAll(`[data-label-for="${CSS.escape(id)}"]`).forEach(b => b.setAttribute("aria-label", `Play: ${title}`));
+  }));
+}
+
+render();
+fillTitles();
+</script>
+</body>
+</html>
