@@ -383,7 +383,7 @@ function render() {
 
   const mail = document.getElementById("email");
   if (P.email) { mail.href = `mailto:${P.email}`; mail.textContent = P.email; }
-  else { mail.textContent = "Add your email in index.html"; mail.removeAttribute("href"); }
+  else { mail.textContent = "send an email to lucasstadnik@gmail.com"; mail.removeAttribute("href"); }
   document.getElementById("links").innerHTML = P.links.map(l => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)}</a></li>`).join("");
   document.getElementById("footer").textContent = `© ${new Date().getFullYear()} ${P.name}`;
 
