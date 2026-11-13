@@ -113,6 +113,11 @@
   .facts dt { color: var(--muted); }
   .about-copy .roll { margin-top: 2.25rem; }
 
+  .about-photos { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; margin-top: clamp(1.5rem, 4vw, 3.5rem); }
+  .about-photos img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; display: block; border-radius: var(--radius); background: var(--surface); }
+  .about-photos figcaption { color: var(--muted); font-size: .9rem; margin-top: .7rem; }
+  @media (min-width: 900px) { .about-photos { grid-template-columns: 1fr 1fr; padding-left: calc(33.333% + 1rem); } }
+
   /* Services */
   .services { list-style: none; counter-reset: s; margin-top: 2.5rem; }
   .services li { counter-increment: s; display: grid; grid-template-columns: 3rem 1fr; gap: .25rem 1rem; align-items: baseline; padding: clamp(.9rem, 1.8vw, 1.5rem) 0; border-top: 1px solid var(--line); }
@@ -131,9 +136,9 @@
   .clients span { font-size: clamp(1.5rem, 3.6vw, 3.2rem); font-weight: 600; letter-spacing: -.04em; text-transform: uppercase; color: var(--silver-flat); }
 
   /* Stats */
-  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; margin-top: 3rem; border-top: 1px solid var(--line); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0; margin-top: 3rem; border-top: 1px solid var(--line); }
   .stat { padding: 1.75rem 1.5rem 1.75rem 0; border-bottom: 1px solid var(--line); }
-  .stat .num { font-size: clamp(3.2rem, 7vw, 6rem); font-variant-numeric: tabular-nums; white-space: nowrap; line-height: 1; }
+  .stat .num { font-size: clamp(3.2rem, 6vw, 5.4rem); font-variant-numeric: tabular-nums; white-space: nowrap; line-height: 1; }
   .stat p { color: var(--muted); margin-top: .8rem; max-width: 22ch; }
   .sample { display: inline-block; margin-top: .7rem; font-size: .75rem; color: #E8C46A; border: 1px dashed rgba(232,196,106,.6); border-radius: 999px; padding: .1rem .6rem; }
 
@@ -258,6 +263,10 @@
         <div><dt>Covers</dt><dd>Planning, script, camera, edit, AI production and hosting</dd></div>
       </dl>
       <a class="roll line" href="#contact"><span data-t="Get in touch">Get in touch</span></a>
+    </div>
+    <div class="about-photos">
+      <figure><img src="about-podcast.jpg" alt="Lucas at a studio desk with a microphone and laptop, hosting The Ignition Podcast" loading="lazy"><figcaption>Hosting The Ignition Podcast</figcaption></figure>
+      <figure><img src="about-event.jpg" alt="Lucas smiling and holding a camera at an event" loading="lazy"><figcaption>On location, covering an event for Warmy</figcaption></figure>
     </div>
   </section>
 
@@ -394,13 +403,15 @@ const SITE = {
     // { label: "YouTube", url: "https://www.youtube.com/@your-channel" },
   ],
 
-  // Count-up numbers. Replace the SAMPLE values with real ones and delete `sample: true`.
+  // Count-up numbers (sources: YouTube public channel data, YouTube Studio and Analytics exports).
+  // `sample: "text"` shows a yellow tag on that card; delete it once the number is confirmed.
   // Set to [] to hide the block.
   stats: [
-    { value: 1.2, decimals: 1, suffix: "M+", label: "Views across the videos I produced", sample: true },
-    { value: 300, suffix: "+", label: "Videos shot and edited", sample: true },
-    { value: 40, label: "Podcast episodes hosted", sample: true },
-    { value: 25, label: "Live webinars hosted", sample: true },
+    { value: 807, suffix: "K", label: "Views on The Ignition Podcast channel since its launch in July 2025" },
+    { value: 99.5, decimals: 1, suffix: "%", label: "Of its views came from people who weren’t subscribers (Jan to Mar 2026)" },
+    { value: 17, label: "Demo bookings traced to four Warmy YouTube videos in 12 months" },
+    { value: 54.9, decimals: 1, suffix: "%", label: "Average percentage viewed on a 4:39 Warmy explainer" },
+    { value: 700, suffix: "+", label: "Videos published across Warmy, AnyBiz and The Ignition Podcast in 12 months", sample: "Estimate, confirm before publishing" },
   ],
 
   // SaaS & Tech: YouTube IDs per format. title "" loads the title from YouTube.
@@ -451,8 +462,14 @@ const PT = {
   "Podcasts and live webinars, in front of the camera as well as behind it.": "Podcasts e webinars ao vivo, na frente e atrás da câmera.",
   "What to make, for whom and where it goes, tied to business goals.": "O que produzir, para quem e onde publicar, ligado às metas do negócio.",
   "Worked with": "Já trabalhei com",
-  "Views across the videos I produced": "Visualizações nos vídeos que produzi", "Videos shot and edited": "Vídeos gravados e editados",
-  "Podcast episodes hosted": "Episódios de podcast apresentados", "Live webinars hosted": "Webinars ao vivo apresentados",
+  "Views on The Ignition Podcast channel since its launch in July 2025": "Visualizações no canal The Ignition Podcast desde o lançamento, em julho de 2025",
+  "Of its views came from people who weren’t subscribers (Jan to Mar 2026)": "Das visualizações vieram de quem não era inscrito (jan a mar de 2026)",
+  "Demo bookings traced to four Warmy YouTube videos in 12 months": "Demos agendadas a partir de quatro vídeos da Warmy no YouTube em 12 meses",
+  "Average percentage viewed on a 4:39 Warmy explainer": "Porcentagem média assistida em um vídeo explicativo de 4:39 da Warmy",
+  "Videos published across Warmy, AnyBiz and The Ignition Podcast in 12 months": "Vídeos publicados na Warmy, na AnyBiz e no The Ignition Podcast em 12 meses",
+  "Estimate, confirm before publishing": "Estimativa, confirme antes de publicar",
+  "Hosting The Ignition Podcast": "Apresentando o The Ignition Podcast",
+  "On location, covering an event for Warmy": "Em campo, cobrindo um evento para a Warmy",
   "Sample number, replace in index.html": "Número de exemplo, troque no index.html",
   "Selected work": "Trabalhos em destaque",
   "SaaS & Tech": "SaaS e Tech",
@@ -592,7 +609,7 @@ if (!reduce) {
       <div class="num display metal" aria-hidden="true" data-i="${i}">${esc(txt(s, reduce ? s.value : 0))}</div>
       <span class="sr-only">${esc(txt(s, s.value))}</span>
       <p>${esc(s.label)}</p>
-      ${s.sample ? `<span class="sample">Sample number, replace in index.html</span>` : ""}
+      ${s.sample ? `<span class="sample">${esc(s.sample === true ? "Sample number, replace in index.html" : s.sample)}</span>` : ""}
     </div>`).join("");
   if (reduce) return;
   const io = new IntersectionObserver(es => es.forEach(en => {
