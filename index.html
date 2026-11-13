@@ -66,6 +66,7 @@
   .nav .lang button { font: inherit; font-size: .8rem; font-weight: 500; letter-spacing: .06em; cursor: pointer; border: 0; background: none; color: var(--muted); padding: .3rem .5rem; border-radius: 999px; }
   .nav .lang button[aria-pressed="true"] { background: var(--surface-2); color: var(--text); }
   .display { overflow-wrap: break-word; }
+  .display.fit { white-space: nowrap; overflow-wrap: normal; }
 
   /* Hero */
   .hero { padding-top: calc(6.5rem + env(safe-area-inset-top, 0px)); }
@@ -238,7 +239,7 @@
 <main>
   <section class="hero">
     <div class="wrap">
-      <h1 class="display metal">Lucas<br>Stadnik</h1>
+      <h1 class="display metal fit">Lucas<br>Stadnik</h1>
       <div class="hero-meta">
         <p>Filmmaker. I plan, script, shoot, edit and host video for SaaS and tech brands, tell human stories on camera and produce films with AI.</p>
         <a class="roll line" href="#work"><span data-t="See the work">See the work</span></a>
@@ -394,7 +395,7 @@
 
   <section class="contact wrap" id="contact">
     <p class="eyebrow">Contact</p>
-    <h2 class="display metal">Let’s<br>collaborate</h2>
+    <h2 class="display metal fit">Let’s<br>collaborate</h2>
     <ul class="links" id="links"></ul>
   </section>
 </main>
@@ -541,6 +542,7 @@ function applyLang(l) {
     el.dataset.t = (l === "pt" && PT[el.dataset.en]) || el.dataset.en;
   });
   document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === l)));
+  if (typeof fitHeadings === "function") fitHeadings();
   if (stLang !== l && typeof setStatement === "function") { stLang = l; setStatement(l); if (typeof onScroll === "function" && !reduce) onScroll(); }
 }
 document.querySelector(".lang").addEventListener("click", e => {
@@ -567,6 +569,19 @@ const titleCache = {};
     p.addEventListener("click", () => front(p));
   });
 })();
+
+/* Giant headings never break mid-word: shrink until the longest line fits */
+function fitHeadings() {
+  document.querySelectorAll(".fit").forEach(el => {
+    el.style.fontSize = "";
+    const avail = el.parentElement.clientWidth - parseFloat(getComputedStyle(el.parentElement).paddingLeft) - parseFloat(getComputedStyle(el.parentElement).paddingRight);
+    const need = el.scrollWidth;
+    if (need > avail) el.style.fontSize = (parseFloat(getComputedStyle(el).fontSize) * avail / need * .985) + "px";
+  });
+}
+addEventListener("resize", fitHeadings);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeadings);
+addEventListener("load", fitHeadings);
 
 /* Hero loops: play only while visible */
 if (!reduce) {
